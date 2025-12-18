@@ -257,33 +257,37 @@ nav {
     padding: 14px 20px;
   }
 
-  /* Dropdown hidden by default */
-  .dropdown {
-    display: none;
-    flex-direction: column;
-    background-color: #f7f7f7;
-    padding-left: 20px;
-    visibility: hidden;
-    margin: 0;
-  }
+ /* Dropdown hidden by default */
+.dropdown {
+  display: none;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  padding-left: 20px;
+  margin: 0;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
 
-  /* Dropdown visible when active */
-  .has-dropdown.active .dropdown {
-    display: flex;
-  }
+/* Show dropdown when hovering parent (link OR dropdown) */
+.has-dropdown:hover .dropdown {
+  display: flex;
+}
 
-  
+/* Dropdown links */
+.dropdown li a {
+  padding: 12px 1.5rem;
+  font-size: 1rem;
+  color: var(--primary-green);
+  display: block;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
 
+.dropdown li a:hover {
+  background-color: #ececec;
+}
 
-  .dropdown li a {
-    padding: 10px 0;
-    font-size: 0.95rem;
-    color: var(--primary-green);
-  }
-
-  .dropdown li a:hover {
-    background-color: #ececec;
-  }
 
   .nav-toggle {
     display: flex;

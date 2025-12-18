@@ -109,28 +109,29 @@ document.addEventListener('DOMContentLoaded', function() {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
 
-  // Toggle menu
+  // Toggle main menu on mobile
   navToggle.addEventListener('click', function() {
     navToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
   });
 
-  // Toggle sub-menu on mobile only
+  // Dropdown links
   const dropdownLinks = document.querySelectorAll('.has-dropdown > a');
-  dropdownLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault(); // يمنع الانتقال مؤقتاً
-        const parentLi = this.parentElement;
-        parentLi.classList.toggle('active');
 
-        // إغلاق القوائم الفرعية الأخرى
-        dropdownLinks.forEach(other => {
-          if (other !== this) {
-            other.parentElement.classList.remove('active');
-          }
-        });
-      }
+  dropdownLinks.forEach(link => {
+    const parentLi = link.parentElement;
+
+    // Hover: show dropdown
+    link.addEventListener('mouseenter', function() {
+      parentLi.classList.add('active');
+    });
+    link.addEventListener('mouseleave', function() {
+      parentLi.classList.remove('active');
+    });
+
+    // Click: navigate مباشرة (لا تمنع)
+    link.addEventListener('click', function() {
+      // لا شيء هنا، الضغط يذهب مباشرة للرابط
     });
   });
 });
