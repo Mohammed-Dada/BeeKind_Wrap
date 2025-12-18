@@ -61,6 +61,7 @@
 
   <nav>
   <div class="nav-container">
+    <!-- Logo -->
     <div class="logo">
       <div class="logo-icon"><img src="./IMG-20251217-WA0205.jpg" height="45" width="45"></div>
       <span>BeeKind Wrap</span>
@@ -97,10 +98,16 @@
       </li>
     </ul>
 
+    
+
     <!-- Language hint -->
     <div class="lang-hint">
       <span class="globe">🌐</span>
       <span class="lang active">EN</span>
+      <!-- Search box -->
+    <div class="nav-search">
+      <input type="text" placeholder="Search..." />
+    </div>
     </div>
 
     <!-- Hamburger toggle -->
@@ -111,6 +118,7 @@
     </div>
   </div>
 </nav>
+
 
   <!-- Hero Section with Background Image -->
   <section class="hero" id="home" style="background: linear-gradient(135deg, rgba(75, 100, 74, 0.7) 0%, rgba(244, 197, 66, 0.7) 100%), url('Screenshot2025-12-02140410.png') center/cover no-repeat; min-height: 600px; display: flex; align-items: center; justify-content: center;">
@@ -181,7 +189,7 @@
               A practical set for daily use. Eco-friendly, reusable wraps that keep food fresh without plastic.
             </p>
             <p class="product-price">€ 24.99</p>
-            <button class="btn btn-primary add-to-cart"
+            <button class="btn btn-primary add-to-cart Product 1"
               data-product="Besswax food wrap 3-Pack- reusable food wrap"
               data-price="24.99">
               Add to Cart
@@ -201,7 +209,7 @@
               Reusable beeswax food wrap made from natural cotton, beeswax, resin, and oil. A plastic-free solution for everyday food storage.
             </p>
             <p class="product-price">€ 11.90</p>
-            <button class="btn btn-primary add-to-cart"
+            <button class="btn btn-primary add-to-cart Product 2"
               data-product="Single reusable - Free plastic Food storage"
               data-price="11.90">
               Add to Cart
@@ -221,7 +229,7 @@
               A complete reusable wrap set for families. Ideal for meals, snacks, and leftovers.
             </p>
             <p class="product-price">€ 32.99</p>
-            <button class="btn btn-primary add-to-cart"
+            <button class="btn btn-primary add-to-cart Product 3"
               data-product="Beeswax Food Wrap Family Set – 5 Reusable Wraps (Mixed Sizes)"
               data-price="32.99">
               Add to Cart
@@ -331,6 +339,22 @@
     </div>
   </footer>
 
+  <!-- Mini Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <span class="close-cart" id="closeCart">&times;</span>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <!-- هنا ستضاف المنتجات بواسطة JS -->
+  </div>
+  <div class="cart-footer">
+    <button id="checkoutBtn">Checkout</button>
+  </div>
+</div>
+
+
   <script src="main.js"></script>
+
 </body>
 </html>

@@ -290,3 +290,68 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const cartSidebar = document.getElementById('cartSidebar');
+  const cartItems = document.getElementById('cartItems');
+  const closeCart = document.getElementById('closeCart');
+
+  // إغلاق الشريط
+  closeCart.addEventListener('click', () => {
+    cartSidebar.classList.remove('open');
+  });
+
+  // أزرار إضافة إلى السلة
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const productName = this.getAttribute('data-product');
+      const productPrice = parseFloat(this.getAttribute('data-price'));
+
+      // تحقق إذا المنتج موجود بالفعل
+      const existingItem = cartItems.querySelector(`.cart-item[data-product="${productName}"]`);
+
+      if (existingItem) {
+        // زيادة العدد
+        const quantityElem = existingItem.querySelector('.cart-quantity');
+        let quantity = parseInt(quantityElem.textContent);
+        quantity += 1;
+        quantityElem.textContent = quantity;
+
+        // تحديث السعر حسب العدد
+        const priceElem = existingItem.querySelector('.cart-price');
+        priceElem.textContent = `$${(productPrice * quantity).toFixed(2)}`;
+      } else {
+        // إنشاء عنصر جديد للمنتج
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.dataset.product = productName;
+        cartItem.dataset.unitPrice = productPrice; // حفظ سعر الوحدة
+        cartItem.innerHTML = `
+          <span class="cart-name">${productName}</span>
+          <span class="cart-quantity">1</span>
+          <span class="cart-price">$${productPrice.toFixed(2)}</span>
+          <button class="remove-item">🗑️</button>
+        `;
+        cartItems.appendChild(cartItem);
+      }
+
+      // فتح الشريط
+      cartSidebar.classList.add('open');
+    });
+  });
+
+  // حذف المنتج
+  cartItems.addEventListener('click', function(e) {
+    if (e.target.classList.contains('remove-item')) {
+      const item = e.target.closest('.cart-item');
+      if (item) {
+        item.remove();
+      }
+    }
+  });
+});
